@@ -2,7 +2,9 @@
 
 import BreadcrumbHeader from '@/components/breadcrumb-header'
 import IntervalAwardsProducers from '@/components/interval-awards-producers'
+import MoviesWinnersByYear from '@/components/movies-winners-by-year'
 import TopStudios from '@/components/top-studios'
+
 import { WinnersByYear } from '@/components/winners-by-year'
 import { useDashboardQuery } from '@/hooks/use-dashboard-query'
 import { topThreeWinners } from '@/lib/utils'
@@ -18,9 +20,10 @@ export default function Dashboard() {
     <>
       <BreadcrumbHeader pageTitle='Dashboard' />
       <div className='sm:grid sm:grid-cols-2 gap-4 flex flex-col'>
-        <TopStudios topThreeStudios={topThree} />
         <WinnersByYear winnersByYear={winnerByYear} />
+        <TopStudios topThreeStudios={topThree} />
         <IntervalAwardsProducers intervalAward={intervalAward} />
+        <MoviesWinnersByYear intervalAward={intervalAward} />
       </div>
     </>
   )
