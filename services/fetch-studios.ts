@@ -1,3 +1,5 @@
+import { API } from './api'
+
 export interface Studio {
   name: string
   winCount: number
@@ -9,7 +11,7 @@ export interface StudioList {
 
 export const fetchStudios = async (): Promise<StudioList> => {
   const response = await fetch(
-    'https://challenge.outsera.tech/api/movies?projection=studios-with-win-count'
+    API.BASE_URL + 'movies?projection=studios-with-win-count'
   )
   if (!response.ok) {
     throw new Error('Erro ao buscar os dados')
