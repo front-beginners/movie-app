@@ -1,21 +1,27 @@
-import BreadcrumbHeader from '@/components/breadcrumb-header'
-import { type Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Dashboard',
-}
+import BreadcrumbHeader from '@/components/breadcrumb-header'
+import useStudios from '@/hooks/use-studios'
+import { topThreeWinners } from '@/lib/utils'
 
 export default function Dashboard() {
+  const { data } = useStudios()
+
+  const topThree = topThreeWinners(data?.studios)
+  console.log(topThree)
+
   return (
     <>
       <BreadcrumbHeader pageTitle='Dashboard' />
-      <div className='flex flex-1 flex-col gap-4 p-4 pt-0'>
-        <div className='grid auto-rows-min gap-4 md:grid-cols-3'>
-          <div className='aspect-video rounded-xl bg-muted/50' />
-          <div className='aspect-video rounded-xl bg-muted/50' />
-          <div className='aspect-video rounded-xl bg-muted/50' />
-        </div>
-        <div className='min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min' />
+      <div className='flex flex-1  gap-4 p-4 pt-0'>
+        {topThree?.map((studio) => {
+          return (
+            <div key={studio.name}>
+              <div className=''>{studio.name}</div>
+              <div className=''>{studio.winCount}</div>
+            </div>
+          )
+        })}
       </div>
     </>
   )
