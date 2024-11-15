@@ -11,10 +11,10 @@ export function WinnersByYear({ winnersByYear }: { winnersByYear?: Years[] }) {
       <CardContent>
         {winnersByYear?.map((winnerByYear) => {
           return (
-            <React.Fragment key={winnerByYear.year}>
+            <div className='flex gap-4 justify-between' key={winnerByYear.year}>
               <div className=''>{winnerByYear.year}</div>
               <div className=''>{winnerByYear.winnerCount}</div>
-            </React.Fragment>
+            </div>
           )
         })}
       </CardContent>

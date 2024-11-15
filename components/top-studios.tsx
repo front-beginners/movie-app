@@ -15,10 +15,10 @@ export default function TopStudios({
       <CardContent>
         {topThreeStudios?.map((studio) => {
           return (
-            <React.Fragment key={studio.name}>
+            <div className='flex gap-4 justify-between' key={studio.name}>
               <div className=''>{studio.name}</div>
               <div className=''>{studio.winCount}</div>
-            </React.Fragment>
+            </div>
           )
         })}
       </CardContent>
