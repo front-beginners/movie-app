@@ -1,4 +1,10 @@
 import { Button } from '@/components/ui/button'
+import {
+  ChevronFirstIcon,
+  ChevronLastIcon,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
@@ -45,15 +51,15 @@ export function Pagination({
 
   return (
     <div className='flex flex-col gap-2 items-center'>
-      <h1>
+      <p className='text-sm'>
         Page {page + 1} of {totalPages} pages
-      </h1>
+      </p>
       <div className='flex gap-2'>
         <Button onClick={() => goToPage(0)} disabled={page === 0}>
-          First
+          <ChevronFirstIcon />
         </Button>
         <Button onClick={() => goToPage(page - 1)} disabled={page === 0}>
-          Previous{' '}
+          <ChevronLeft />
         </Button>
         {getPageNumbers().map((pageNumber) => (
           <Button
@@ -68,13 +74,13 @@ export function Pagination({
           onClick={() => goToPage(page + 1)}
           disabled={page === totalPages - 1}
         >
-          Next
+          <ChevronRight />
         </Button>
         <Button
           onClick={() => goToPage(totalPages - 1)}
           disabled={page === totalPages - 1}
         >
-          Last
+          <ChevronLastIcon />
         </Button>
       </div>
     </div>

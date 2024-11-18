@@ -38,17 +38,19 @@ export function DataTable() {
       <Table>
         <TableHeader>
           <TableRow className='w-full bg-slate-100'>
-            <TableHead>Id</TableHead>
+            <TableHead className='w-1/8'>Id</TableHead>
             <TableHead>
-              Year
-              <Input
-                value={searchYear}
-                onChange={(e) => setSearchYear(e.target.value)}
-              ></Input>
+              <div className='flex gap-4 items-center'>
+                Year
+                <Input
+                  value={searchYear}
+                  onChange={(e) => setSearchYear(e.target.value)}
+                ></Input>
+              </div>
             </TableHead>
             <TableHead>Title</TableHead>
             <TableHead>
-              <div className='flex flex-col'>
+              <div className='flex gap-4 items-center'>
                 Winner
                 <Select
                   value={winnerQuery}
