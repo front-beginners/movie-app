@@ -2,8 +2,8 @@
 
 import BreadcrumbHeader from '@/components/breadcrumb-header'
 import IntervalAwardsProducers from '@/components/interval-awards-producers'
-import MoviesWinnersByYear from '@/components/movies-winners-by-year'
 import TopStudios from '@/components/top-studios'
+import { WinnerMovieByYear } from '@/components/winner-movie-by-year'
 
 import { WinnersByYear } from '@/components/winners-by-year'
 import { useIntervalAward } from '@/hooks/use-interval-award-query'
@@ -29,7 +29,7 @@ export default function Dashboard() {
         <WinnersByYear winnersByYear={multipleWinners?.data.years} />
         <TopStudios topThreeStudios={topThree} />
         <IntervalAwardsProducers intervalAward={data?.data} />
-        {/* <MoviesWinnersByYear intervalAward={movieWinnerByYear?.data} /> */}
+        <WinnerMovieByYear winnerByMovie={movieWinnerByYear?.data} />
       </div>
     </>
   )
