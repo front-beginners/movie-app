@@ -14,6 +14,13 @@ import { Choose, For } from '@/components/utility-components'
 
 import { Pagination } from './pagination'
 import { useDataTable } from '@/hooks/use-data-table'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export function DataTable() {
   const {
@@ -41,19 +48,24 @@ export function DataTable() {
             </TableHead>
             <TableHead>Title</TableHead>
             <TableHead>
-              Winner
-              <select
-                className='ml-2'
-                onChange={(value) => setWinner(value.target.value)}
-              >
-                <option value=''>All</option>
-                <option value='true' selected={winnerQuery === 'true'}>
-                  Winner
-                </option>
-                <option value='false' selected={winnerQuery === 'false'}>
-                  Not Winner
-                </option>
-              </select>
+              <div className='flex flex-col'>
+                Winner
+                <Select
+                  value={winnerQuery}
+                  onValueChange={(value) =>
+                    value === 'all' ? setWinner('') : setWinner(value)
+                  }
+                >
+                  <SelectTrigger className='w-[180px]'>
+                    <SelectValue placeholder='All' />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value='all'>All</SelectItem>
+                    <SelectItem value='true'>Winner</SelectItem>
+                    <SelectItem value='false'>Not Winner</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
             </TableHead>
           </TableRow>
         </TableHeader>
