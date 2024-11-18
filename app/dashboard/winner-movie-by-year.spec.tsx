@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom'
-
 import { render, screen, fireEvent } from '@testing-library/react'
 import { WinnerMovieByYear } from './winner-movie-by-year'
 import { useWinnerMovieByYear } from '@/hooks/use-winner-movie-by-year'

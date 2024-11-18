@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { MultipleWinnersByYear } from './multiple-winners-by-year'
 import { useMultipleWinnersQuery } from '../../hooks/use-multiple-winners-query'

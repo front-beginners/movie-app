@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { IntervalAwardsProducers } from './interval-awards-producers'
 import { useIntervalAward } from '../../hooks/use-interval-award-query'
