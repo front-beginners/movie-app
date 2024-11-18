@@ -6,24 +6,30 @@ import MoviesWinnersByYear from '@/components/movies-winners-by-year'
 import TopStudios from '@/components/top-studios'
 
 import { WinnersByYear } from '@/components/winners-by-year'
-import { useDashboardQuery } from '@/hooks/use-dashboard-query'
+import { useIntervalAward } from '@/hooks/use-interval-award-query'
+import { useMultipleWinnersQuery } from '@/hooks/use-multiple-winners-query'
+import { useStudiosQuery } from '@/hooks/use-studios-query'
+import { useWinnerMovieByYear } from '@/hooks/use-winner-movie-by-year-query'
 import { topThreeWinners } from '@/lib/utils'
 import React from 'react'
 
 export default function Dashboard() {
-  const { winnerByYear, studios, intervalAward } = useDashboardQuery()
+  // const { winnerByYear, studios, movieWinnerByYear } = useDashboardQuery()
+  const { data } = useIntervalAward()
+  const { data: multipleWinners } = useMultipleWinnersQuery()
+  const { data: movieWinnerByYear } = useWinnerMovieByYear({ year: '2000' })
+  const { data: studios } = useStudiosQuery()
 
-  const topThree = topThreeWinners(studios)
-  console.log(intervalAward)
+  const topThree = topThreeWinners(studios?.data.studios)
 
   return (
     <>
       <BreadcrumbHeader pageTitle='Dashboard' />
       <div className='sm:grid sm:grid-cols-2 gap-4 flex flex-col'>
-        <WinnersByYear winnersByYear={winnerByYear} />
+        <WinnersByYear winnersByYear={multipleWinners?.data.years} />
         <TopStudios topThreeStudios={topThree} />
-        <IntervalAwardsProducers intervalAward={intervalAward} />
-        <MoviesWinnersByYear intervalAward={intervalAward} />
+        <IntervalAwardsProducers intervalAward={data?.data} />
+        {/* <MoviesWinnersByYear intervalAward={movieWinnerByYear?.data} /> */}
       </div>
     </>
   )
