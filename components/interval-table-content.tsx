@@ -36,7 +36,7 @@ export function IntervalTableContent({
         <TableBody>
           <Choose>
             <Choose.When condition={isLoading}>
-              <TableRow>
+              <TableRow aria-label='loading'>
                 <TableCell>
                   <Skeleton className='h-5 w-auto m-1' />
                 </TableCell>
@@ -52,7 +52,7 @@ export function IntervalTableContent({
               </TableRow>
             </Choose.When>
             <Choose.When condition={isError}>
-              <TableRow>
+              <TableRow aria-label='error'>
                 <TableCell colSpan={4} className='text-center'>
                   Try again
                 </TableCell>

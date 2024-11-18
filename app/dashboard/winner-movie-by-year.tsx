@@ -19,7 +19,7 @@ import { Input } from '../../components/ui/input'
 import { Button } from '../../components/ui/button'
 
 import { Choose, For } from '../../components/utility-components'
-import useWinnerMovieByYear from '@/hooks/use-winner-movie-by-year'
+import { useWinnerMovieByYear } from '@/hooks/use-winner-movie-by-year'
 import { Skeleton } from '../../components/ui/skeleton'
 
 export function WinnerMovieByYear() {

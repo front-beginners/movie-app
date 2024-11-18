@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useWinnerMovieByYearQuery } from '@/hooks/use-winner-movie-by-year-query'
 
-export default function useWinnerMovieByYear() {
+export function useWinnerMovieByYear() {
   const [formText, setformText] = useState('')
   const [inputValue, setInputValue] = useState('')
   const { winnerMovieByYear, isError, isLoading } = useWinnerMovieByYearQuery({

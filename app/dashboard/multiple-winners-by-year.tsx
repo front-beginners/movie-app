@@ -27,7 +27,6 @@ export function MultipleWinnersByYear() {
       <CardHeader>
         <CardTitle>List years with multiple winners</CardTitle>
       </CardHeader>
-
       <CardContent>
         <Table>
           <TableHeader>
