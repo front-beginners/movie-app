@@ -14,7 +14,6 @@ import { topThreeWinners } from '@/lib/utils'
 import React from 'react'
 
 export default function Dashboard() {
-  // const { winnerByYear, studios, movieWinnerByYear } = useDashboardQuery()
   const { data } = useIntervalAward()
   const { data: multipleWinners } = useMultipleWinnersQuery()
   const { data: movieWinnerByYear } = useWinnerMovieByYear({ year: '2000' })
