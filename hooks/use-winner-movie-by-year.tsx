@@ -15,7 +15,7 @@ export function useWinnerMovieByYear() {
 
   const isButtonDisabled = formText.length === 0
   const noResultFound =
-    winnerMovieByYear.length === 0 && inputValue.length > 0 && isError
+    winnerMovieByYear.length === 0 && inputValue.length > 0 && !isError
 
   return {
     setformText,
