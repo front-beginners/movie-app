@@ -11,5 +11,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function topThreeWinners(studios?: Studio[]) {
-  return studios?.sort((a, b) => b.winCount - a.winCount).slice(0, 3)
+  return studios?.sort((a, b) => b.winCount - a.winCount).slice(0, 3) || []
 }

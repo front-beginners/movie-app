@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Studio } from '@/services/fetch-studios'
 import {
   Table,
   TableBody,
@@ -9,12 +8,15 @@ import {
   TableHeader,
   TableRow,
 } from './ui/table'
+import { useStudiosQuery } from '@/hooks/use-studios-query'
+import { topThreeWinners } from '@/lib/utils'
+import { Choose, For } from './utility-components'
+import { Skeleton } from './ui/skeleton'
 
-export default function TopStudios({
-  topThreeStudios,
-}: {
-  topThreeStudios?: Studio[]
-}) {
+export default function TopStudios() {
+  const { studioList, isLoading, isError } = useStudiosQuery()
+  const topThreeStudios = topThreeWinners(studioList?.studios)
+
   return (
     <Card>
       <CardHeader>
@@ -29,16 +31,39 @@ export default function TopStudios({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {topThreeStudios?.map((studio) => {
-              return (
+            <Choose>
+              <Choose.When condition={isLoading}>
+                <For
+                  of={Array.from({ length: 3 })}
+                  render={(_, index) => (
+                    <TableRow key={index}>
+                      <TableCell>
+                        <Skeleton className='h-5 w-auto m-1' />
+                      </TableCell>
+                      <TableCell>
+                        <Skeleton className='h-5 w-auto m-1' />
+                      </TableCell>
+                    </TableRow>
+                  )}
+                />
+              </Choose.When>
+              <Choose.When condition={isError}>
+                <TableRow>
+                  <TableCell colSpan={3}>Try again</TableCell>
+                </TableRow>
+              </Choose.When>
+            </Choose>
+            <For
+              of={topThreeStudios}
+              render={(studio) => (
                 <TableRow key={studio.name}>
                   <TableCell className='font-medium'>{studio.name}</TableCell>
                   <TableCell className='font-medium'>
                     {studio.winCount}
                   </TableCell>
                 </TableRow>
-              )
-            })}
+              )}
+            />
           </TableBody>
         </Table>
       </CardContent>
