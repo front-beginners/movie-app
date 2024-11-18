@@ -40,7 +40,7 @@ export function DataTable() {
           <TableRow className='w-full bg-slate-100'>
             <TableHead className='w-1/8'>Id</TableHead>
             <TableHead>
-              <div className='flex gap-4 items-center'>
+              <div className='sm:flex flex-row gap-4 items-center'>
                 Year
                 <Input
                   value={searchYear}
@@ -50,7 +50,7 @@ export function DataTable() {
             </TableHead>
             <TableHead>Title</TableHead>
             <TableHead>
-              <div className='flex gap-4 items-center'>
+              <div className='sm:flex flex-row gap-4 items-center'>
                 Winner
                 <Select
                   value={winnerQuery}
@@ -58,7 +58,7 @@ export function DataTable() {
                     value === 'all' ? setWinner('') : setWinner(value)
                   }
                 >
-                  <SelectTrigger className='w-[180px]'>
+                  <SelectTrigger className='sm:w-[180px] w-[90px]'>
                     <SelectValue placeholder='All' />
                   </SelectTrigger>
                   <SelectContent>
