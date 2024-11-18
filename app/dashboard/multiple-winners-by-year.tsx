@@ -1,5 +1,12 @@
+'use client'
+
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/card'
 import {
   Table,
   TableBody,
@@ -7,25 +14,24 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './ui/table'
-import { useStudiosQuery } from '@/hooks/use-studios-query'
-import { topThreeWinners } from '@/lib/utils'
-import { Choose, For } from './utility-components'
-import { Skeleton } from './ui/skeleton'
+} from '../../components/ui/table'
+import { Choose, For } from '../../components/utility-components'
+import { Skeleton } from '../../components/ui/skeleton'
+import { useMultipleWinnersQuery } from '@/hooks/use-multiple-winners-query'
 
-export default function TopStudios() {
-  const { studioList, isLoading, isError } = useStudiosQuery()
-  const topThreeStudios = topThreeWinners(studioList?.studios)
+export function MultipleWinnersByYear() {
+  const { multipleWinners, isLoading, isError } = useMultipleWinnersQuery()
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Top 3 Studios With Winners</CardTitle>
+        <CardTitle>List years with multiple winners</CardTitle>
       </CardHeader>
+
       <CardContent>
         <Table>
-          <TableHeader className='w-full bg-slate-100'>
-            <TableRow>
+          <TableHeader>
+            <TableRow className='w-full bg-slate-100'>
               <TableHead>Year</TableHead>
               <TableHead>Win Count</TableHead>
             </TableRow>
@@ -49,17 +55,21 @@ export default function TopStudios() {
               </Choose.When>
               <Choose.When condition={isError}>
                 <TableRow>
-                  <TableCell colSpan={3}>Try again</TableCell>
+                  <TableCell colSpan={2} className='text-center'>
+                    Try again
+                  </TableCell>
                 </TableRow>
               </Choose.When>
             </Choose>
             <For
-              of={topThreeStudios}
-              render={(studio) => (
-                <TableRow key={studio.name}>
-                  <TableCell className='font-medium'>{studio.name}</TableCell>
+              of={multipleWinners}
+              render={(winnerByYear) => (
+                <TableRow key={winnerByYear.year}>
                   <TableCell className='font-medium'>
-                    {studio.winCount}
+                    {winnerByYear.year}
+                  </TableCell>
+                  <TableCell className='font-medium'>
+                    {winnerByYear.winnerCount}
                   </TableCell>
                 </TableRow>
               )}

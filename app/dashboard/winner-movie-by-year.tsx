@@ -1,7 +1,12 @@
 'use-client'
 
 import type { WinnerMovieByYear } from '@/types'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/card'
 import {
   Table,
   TableHead,
@@ -9,13 +14,13 @@ import {
   TableHeader,
   TableCell,
   TableBody,
-} from './ui/table'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+} from '../../components/ui/table'
+import { Input } from '../../components/ui/input'
+import { Button } from '../../components/ui/button'
 
-import { Choose, For } from './utility-components'
+import { Choose, For } from '../../components/utility-components'
 import useWinnerMovieByYear from '@/hooks/use-winner-movie-by-year'
-import { Skeleton } from './ui/skeleton'
+import { Skeleton } from '../../components/ui/skeleton'
 
 export function WinnerMovieByYear() {
   const {
