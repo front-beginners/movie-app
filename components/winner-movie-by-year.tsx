@@ -15,6 +15,7 @@ import { Button } from './ui/button'
 
 import { Choose, For } from './utility-components'
 import useWinnerMovieByYear from '@/hooks/use-winner-movie-by-year'
+import { Skeleton } from './ui/skeleton'
 
 export function WinnerMovieByYear() {
   const {
@@ -57,7 +58,15 @@ export function WinnerMovieByYear() {
             <Choose>
               <Choose.When condition={isLoading}>
                 <TableRow>
-                  <TableCell colSpan={3}>Loading</TableCell>
+                  <TableCell>
+                    <Skeleton className='h-5 w-auto m-1' />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton className='h-5 w-auto m-1' />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton className='h-5 w-auto m-1' />
+                  </TableCell>
                 </TableRow>
               </Choose.When>
               <Choose.When condition={isRequestError}>
