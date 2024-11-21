@@ -54,7 +54,7 @@ describe('useWinnerMovieByYear', () => {
   it('should handle no result found', () => {
     ;(useWinnerMovieByYearQuery as jest.Mock).mockReturnValue({
       winnerMovieByYear: [],
-      isError: true,
+      isError: false,
       isLoading: false,
     })
 
