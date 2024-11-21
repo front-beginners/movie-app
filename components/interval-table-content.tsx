@@ -1,3 +1,5 @@
+'use client'
+
 import { IntervalAwardMinMax } from '@/types'
 import { Skeleton } from './ui/skeleton'
 import {

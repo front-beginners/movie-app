@@ -31,6 +31,7 @@ export function DataTable() {
     isLoading,
     isError,
     winnerQuery,
+    searchParams,
   } = useDataTable()
 
   return (
@@ -120,7 +121,11 @@ export function DataTable() {
         </TableBody>
       </Table>
       {data && data.content.length > 0 && (
-        <Pagination totalPages={data.totalPages} page={data.number} />
+        <Pagination
+          totalPages={data.totalPages}
+          page={data.number}
+          searchParams={searchParams}
+        />
       )}
     </div>
   )

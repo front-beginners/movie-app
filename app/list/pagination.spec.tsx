@@ -6,12 +6,17 @@ jest.mock('next/navigation', () => ({
     push: jest.fn(),
   })),
   usePathname: jest.fn(),
-  useSearchParams: jest.fn(() => new URLSearchParams('')),
 }))
 
 describe('Pagination', () => {
   const setup = (totalPages: number, page: number) => {
-    render(<Pagination totalPages={totalPages} page={page} />)
+    render(
+      <Pagination
+        totalPages={totalPages}
+        page={page}
+        searchParams={new URLSearchParams('')}
+      />
+    )
   }
 
   it('renders pagination component', () => {

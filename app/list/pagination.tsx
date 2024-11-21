@@ -6,17 +6,18 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
 export function Pagination({
   totalPages,
   page,
+  searchParams,
 }: {
   totalPages: number
   page: number
+  searchParams: URLSearchParams
 }) {
-  const searchParams = useSearchParams()
   const router = useRouter()
 
   const goToPage = useCallback(
