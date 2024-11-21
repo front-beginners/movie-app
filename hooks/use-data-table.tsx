@@ -29,5 +29,6 @@ export function useDataTable() {
     isLoading,
     isError,
     winnerQuery,
+    searchParams,
   }
 }
