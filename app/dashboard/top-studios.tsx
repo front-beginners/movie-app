@@ -31,7 +31,7 @@ export function TopStudios() {
         <Table>
           <TableHeader className='w-full bg-slate-100'>
             <TableRow>
-              <TableHead>Year</TableHead>
+              <TableHead>Name</TableHead>
               <TableHead>Win Count</TableHead>
             </TableRow>
           </TableHeader>

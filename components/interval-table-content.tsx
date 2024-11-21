@@ -29,7 +29,7 @@ export function IntervalTableContent({
           <TableRow>
             <TableHead>Producer</TableHead>
             <TableHead>Interval</TableHead>
-            <TableHead>Previos Year</TableHead>
+            <TableHead>Previous Year</TableHead>
             <TableHead>Following Year</TableHead>
           </TableRow>
         </TableHeader>
